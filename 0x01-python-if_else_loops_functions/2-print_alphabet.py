@@ -1,5 +1,2 @@
 #!/usr/bin/python3
-import string
-
-for letter in string.ascii_lowercase:
-    print(letter, end='')
+print(''.join(['{}'.format(chr(letter)) for letter in range(ord('a'), ord('z') + 1)]), end='')
