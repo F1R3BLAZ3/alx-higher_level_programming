@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 def pow(a, b):
     result = a ** b
-    return "{:.2e}".format(result)
+    return int(result) if result.is_integer() else round(result, 2)
