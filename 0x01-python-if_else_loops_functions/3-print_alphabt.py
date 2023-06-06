@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-print(''.join(['{}'.format(chr(letter)) for letter in range(ord('a'), ord('z')+1)
-               if chr(letter) not in ['q', 'e']]), end='')
+for char_code in range(ord('a'), ord('z')+1):
+    if chr(char_code) not in 'qe':
+        print("{}".format(chr(char_code)), end='')
