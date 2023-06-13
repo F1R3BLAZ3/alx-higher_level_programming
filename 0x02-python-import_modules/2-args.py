@@ -7,8 +7,7 @@ def main():
     num_args = len(argv)
 
     if num_args == 0:
-        print("0 argument{}:".format("" if num_args == 0 else "s"))
-        print(".")
+        print("0 argument{}.\n.".format("" if num_args == 0 else "s"))
     else:
         print("{} argument{}:".format(num_args, "" if num_args == 1 else "s"))
         for i, arg in enumerate(argv, 1):
