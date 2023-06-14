@@ -2,7 +2,7 @@
 import sys
 
 
-if __name__ == "__main__":
+def main():
     argv = sys.argv[1:]
     num_args = len(argv)
 
@@ -16,3 +16,7 @@ if __name__ == "__main__":
         print(num_args, "arguments:")
         for i, arg in enumerate(argv, 1):
             print(i, ":", arg)
+
+
+if __name__ == "__main__":
+    main()
