@@ -118,7 +118,7 @@ class Rectangle:
         Returns a string representation of the rectangle object.
 
         Returns:
-        str: A string representation of the rectangle object.
+            str: A string representation of the rectangle object.
         """
         return "<{}({}, {})>".format(self.__class__.__name__,
                                      self.__width, self.__height)
