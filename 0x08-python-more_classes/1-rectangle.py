@@ -26,12 +26,26 @@ class Rectangle:
 
     @property
     def width(self):
+        """
+        Get the width of the square.
 
+        Returns:
+            int: The width of the square.
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
+        """
+        Set the width of the square.
 
+        Args:
+            value (int): The width of the square.
+
+        Raises:
+            TypeError: If the width is not an integer.
+            ValueError: If the width is less than 0.
+        """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         elif value < 0:
@@ -41,12 +55,26 @@ class Rectangle:
 
     @property
     def height(self):
+        """
+        Get the height of the square.
 
+        Returns:
+            int: The height of the square.
+        """
         return self.__width
 
     @width.setter
     def height(self, value):
+        """
+        Set the height of the square.
 
+        Args:
+            value (int): The height of the square.
+
+        Raises:
+            TypeError: If the height is not an integer.
+            ValueError: If the height is less than 0.
+        """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         elif value < 0:
