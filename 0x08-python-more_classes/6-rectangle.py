@@ -137,4 +137,4 @@ class Rectangle:
         Decrements the number_of_instances class attribute.
         """
         print("Bye rectangle...")
-        Rectangle.number_of
+        Rectangle.number_of_instances -= 1
