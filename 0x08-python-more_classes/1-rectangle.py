@@ -63,7 +63,7 @@ class Rectangle:
         """
         return self.__width
 
-    @width.setter
+    @height.setter
     def height(self, value):
         """
         Set the height of the square.
