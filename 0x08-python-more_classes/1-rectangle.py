@@ -27,20 +27,20 @@ class Rectangle:
     @property
     def width(self):
         """
-        Get the width of the square.
+        Get the width of the rectangle.
 
         Returns:
-            int: The width of the square.
+            int: The width of the rectangle.
         """
         return self.__width
 
     @width.setter
     def width(self, value):
         """
-        Set the width of the square.
+        Set the width of the rectangle.
 
         Args:
-            value (int): The width of the square.
+            value (int): The width of the rectangle.
 
         Raises:
             TypeError: If the width is not an integer.
@@ -56,20 +56,20 @@ class Rectangle:
     @property
     def height(self):
         """
-        Get the height of the square.
+        Get the height of the rectangle.
 
         Returns:
-            int: The height of the square.
+            int: The height of the rectangle.
         """
         return self.__height
 
     @height.setter
     def height(self, value):
         """
-        Set the height of the square.
+        Set the height of the rectangle.
 
         Args:
-            value (int): The height of the square.
+            value (int): The height of the rectangle.
 
         Raises:
             TypeError: If the height is not an integer.
@@ -81,3 +81,22 @@ class Rectangle:
             raise ValueError("height must be >= 0")
         else:
             self.__height = value
+
+    def area(self):
+        """
+        Compute the area of the rectangle.
+
+        Returns:
+            int: The area of the rectangle.
+        """
+        return self.__width * self.__height 
+
+    def perimeter(self):
+        """
+        Compute the perimeter of the rectangle.
+
+        Returns:
+            int: The perimeter of the rectangle.
+        """
+        
+        return 2 * (self.__width + self.__height)
