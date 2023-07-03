@@ -24,15 +24,6 @@ class Rectangle:
         self.width = width
         self.height = height
 
-    def __str__(self):
-        """
-        Return a string representation of the rectangle.
-
-        Returns:
-            str: A string representation of the rectangle.
-        """
-        return print("Rectangle(width={}, height={}".format(self.__width, self.__height))
-
     @property
     def width(self):
         """
@@ -70,7 +61,7 @@ class Rectangle:
         Returns:
             int: The height of the square.
         """
-        return self.__width
+        return self.__height
 
     @height.setter
     def height(self, value):
