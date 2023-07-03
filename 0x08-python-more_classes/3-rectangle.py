@@ -1,8 +1,3 @@
-#!/usr/bin/python3
-
-"""This module defines a Rectangle class."""
-
-
 class Rectangle:
     """
     This class represents a rectangle.
@@ -89,7 +84,7 @@ class Rectangle:
         Returns:
             int: The area of the rectangle.
         """
-        return self.__width * self.__height 
+        return self.__width * self.__height
 
     def perimeter(self):
         """
@@ -98,19 +93,15 @@ class Rectangle:
         Returns:
             int: The perimeter of the rectangle.
         """
-
-        if self.__width == 0 or self.__height == 0:
-            return 0
-        else:
-            return 2 * (self.__width + self.__height)
+        return 2 * (self.__width + self.__height)
 
     def __str__(self):
         """
-        Return a string representation of the rectangle.
+        Returns a string representation of the rectangle using the '#' character.
 
         Returns:
-            str: A string representing the rectangle using the '#' character.
-                 Returns an empty string if the width or height is 0.
+            str: A string representation of the rectangle with '#' characters for the width and height.
+                 If either width or height is 0, it returns an empty string.
         """
         if self.__width == 0 or self.__height == 0:
             return ""
@@ -119,3 +110,12 @@ class Rectangle:
             for _ in range(self.__height):
                 rectangle_str += "#" * self.__width + "\n"
             return rectangle_str
+
+    def __repr__(self):
+        """
+        Returns a string representation of the rectangle object.
+
+        Returns:
+            str: A string representation of the rectangle object.
+        """
+        return f"<{self.__class__.__name__}({self.__width}, {self.__height})>"
