@@ -103,3 +103,19 @@ class Rectangle:
             return 0
         else:
             return 2 * (self.__width + self.__height)
+
+    def __str__(self):
+        """
+        Return a string representation of the rectangle.
+
+        Returns:
+            str: A string representing the rectangle using the '#' character.
+                 Returns an empty string if the width or height is 0.
+        """
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        else:
+            rectangle_str = ""
+            for _ in range(self.__height):
+                rectangle_str += "#" * self.__width + "\n"
+            return rectangle_str
