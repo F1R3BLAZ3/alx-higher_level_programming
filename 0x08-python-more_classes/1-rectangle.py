@@ -24,6 +24,9 @@ class Rectangle:
         self.width = width
         self.height = height
 
+    def __str__(self):
+        return str(self.__dict__)
+
     @property
     def width(self):
         """
