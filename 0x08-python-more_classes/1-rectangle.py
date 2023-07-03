@@ -8,7 +8,17 @@ class Rectangle:
     This class represents a rectangle.
     """
     def __init__(self, width=0, height=0):
+        """
+        Initializes a Rectangle instance with an optional height and width.
 
+        Args:
+            height (int, optional): The height of the rectangle. Defaults to 0.
+            width (int, optional): The width of the rectangle. Defaults to 0.
+
+        Raises:
+            TypeError: If the width or height is not an integer.
+            ValueError: If the width or height is less than 0.
+        """
         self.__width = 0
         self.__height = 0
         self.width = width
