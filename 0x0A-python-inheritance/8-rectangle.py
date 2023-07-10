@@ -2,7 +2,7 @@
 
 """
     A rectangle class inheriting from BaseGeometry.
-    """
+"""
 
 
 class Rectangle(BaseGeometry):
