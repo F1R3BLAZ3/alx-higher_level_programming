@@ -38,9 +38,11 @@ class BaseGeometry:
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
 
+
 """
     A rectangle class inheriting from BaseGeometry.
 """
+
 
 class Rectangle(BaseGeometry):
     """
