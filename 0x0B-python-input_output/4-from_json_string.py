@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+
+"""
+    Returns a Python data structure represented by a JSON string.
+"""
+
+
 import json
 
 
@@ -21,7 +27,9 @@ if __name__ == "__main__":
     print(my_list)
     print(type(my_list))
 
-    my_dict_str = '{"id": 12, "name": "John", "places": ["San Francisco", "Tokyo"], "is_active": true, "info": {"average": 3.14, "age": 36}}'
+    my_dict_str = '{"id": 12, "name": "John",
+                    "places": ["San Francisco", "Tokyo"],
+                    "is_active": true, "info": {"average": 3.14, "age": 36}}'
     my_dict = from_json_string(my_dict_str)
     print(my_dict)
     print(type(my_dict))
