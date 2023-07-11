@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
 """
-    Adds all arguments to a Python list and saves them to a file.
+    Adds all arguments to a Python list and saves them to a file as
+    a JSON representation.
 """
 
 
-from sys import argv
-from os.path import exists
+import sys
 import json
 
 
@@ -39,27 +39,24 @@ def load_from_json_file(filename):
         return json.load(file)
 
 
-def add_arguments_to_list_and_save():
+def add_args_to_list():
     """
-    Adds all arguments to a Python list and saves them to a file.
-
-    The list is saved as a JSON representation in a file named add_item.json.
-    If the file doesn’t exist, it is created.
-
-    Returns:
-        None
+    Adds all arguments to a Python list and saves them to a file as
+    a JSON representation.
     """
-    filename = "add_item.json"
+    # Load existing list from file or create a new list
+    try:
+        existing_list = load_from_json_file("add_item.json")
+    except FileNotFoundError:
+        existing_list = []
 
-    if exists(filename):
-        my_list = load_from_json_file(filename)
-    else:
-        my_list = []
+    # Add arguments to the list
+    new_items = sys.argv[1:]
+    updated_list = existing_list + new_items
 
-    my_list.extend(argv[1:])
-
-    save_to_json_file(my_list, filename)
+    # Save the updated list to file
+    save_to_json_file(updated_list, "add_item.json")
 
 
 if __name__ == "__main__":
-    add_arguments_to_list_and_save()
+    add_args_to_list()
