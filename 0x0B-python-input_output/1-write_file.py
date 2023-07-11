@@ -1,19 +1,30 @@
 #!/usr/bin/python3
 
-"""Writes a string to a text file (UTF8) and returns the number of characters written.
+"""
+    Writes a string to a text file (UTF8) and
+    returns the number of characters written.
 """
 
 
 def write_file(filename="", text=""):
-  """Writes a string to a text file (UTF8) and returns the number of characters written.
+    """
+    Writes a string to a text file (UTF8) and
+    returns the number of characters written.
 
-  Args:
-    filename: The name of the file to write to.
-    text: The text to write to the file.
+    Args:
+        filename (str): The name of the file to write
+                        (default is an empty string).
+        text (str): The string to write to the file
+                    (default is an empty string).
 
-  Returns:
-    The number of characters written.
-  """
+    Returns:
+        int: The number of characters written to the file.
+    """
+    with open(filename, mode='w', encoding='utf-8') as file:
+        return file.write(text)
 
-  with open(filename, "w", encoding="utf-8") as f:
-    return len(f.write(text))
+
+if __name__ == "__main__":
+    nb_characters = write_file(
+        "my_first_file.txt", "This School is so cool!\n")
+    print(nb_characters)
