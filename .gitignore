@@ -41,3 +41,4 @@ Test
 0x09-python-everything_is_object/test
 0x0B-python-input_output/0-main.py
 0x0B-python-input_output/my_file_0.txt
+0x0B-python-input_output/__pycache__/0-read_file.cpython-38.pyc
