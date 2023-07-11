@@ -5,15 +5,15 @@
 
 
 def read_file(filename=""):
-  """Reads a text file (UTF8) and prints it to stdout.
+    """Reads a text file (UTF8) and prints it to stdout.
 
-  Args:
-    filename: The name of the file to read.
+    Args:
+      filename: The name of the file to read.
 
-  Returns:
-    The contents of the file as a string.
-  """
+    Returns:
+      The contents of the file as a string.
+    """
 
-  with open(filename, "r", encoding="utf-8") as f:
-    content = f.read()
-  print(content)
+    with open(filename, "r", encoding="utf-8") as f:
+        content = f.read()
+    print(content)
