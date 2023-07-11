@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+"""
+    Represents a student.
+"""
+
 
 class Student:
     """
