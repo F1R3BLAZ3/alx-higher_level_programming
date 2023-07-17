@@ -24,7 +24,8 @@ class TestBase(unittest.TestCase):
     def test_id_assignment_with_multiple_instances(self):
         # Create 100 instances and check their IDs
         instances = [Base() for _ in range(100)]
-        self.assertEqual([instance.id for instance in instances], list(range(1, 101)))
+        self.assertEqual([instance.id for instance in instances],
+                         list(range(1, 101)))
 
     def test_to_json_string(self):
         data = [{'id': 1, 'name': 'Alice'}, {'id': 2, 'name': 'Bob'}]
