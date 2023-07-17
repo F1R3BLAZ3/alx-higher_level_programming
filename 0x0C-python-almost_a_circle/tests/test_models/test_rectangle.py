@@ -107,6 +107,23 @@ class TestRectangle(unittest.TestCase):
         valid_dict = r.to_dictionary()
         self.assertDictEqual(valid_dict, {'id': 1, 'width': 5, 'height': 10,
                                           'x': 2, 'y': 3})
+        
+    def test_rectangle_init_with_invalid_attributes(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle("invalid", 10, 1, 2, 10)
+        
+        with self.assertRaises(ValueError):
+            r2 = Rectangle(0, 10, 1, 2, 11)
+    
+    def test_rectangle_to_dictionary(self):
+        r1 = Rectangle(5, 10, 1, 2, 10)
+        expected_dict = {'id': 10, 'width': 5, 'height': 10, 'x': 1, 'y': 2}
+        self.assertDictEqual(r1.to_dictionary(), expected_dict)
+    
+    def test_rectangle_update_with_invalid_attribute(self):
+        r1 = Rectangle(5, 10, 1, 2, 10)
+        with self.assertRaises(AttributeError):
+            r1.update(invalid_attribute=42)
 
 
 if __name__ == '__main__':

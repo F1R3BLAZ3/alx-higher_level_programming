@@ -75,14 +75,11 @@ class Square(Rectangle):
             if len(args) >= 4:
                 self.y = args[3]
         else:
-            if 'id' in kwargs:
-                self.id = kwargs['id']
-            if 'size' in kwargs:
-                self.size = kwargs['size']
-            if 'x' in kwargs:
-                self.x = kwargs['x']
-            if 'y' in kwargs:
-                self.y = kwargs['y']
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
+                else:
+                    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{key}'")
 
     def to_dictionary(self):
         """Converts the square to a dictionary representation.

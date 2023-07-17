@@ -22,6 +22,12 @@ class TestBase(unittest.TestCase):
         b3 = Base(10)
         self.assertEqual(b3.id, 10)
 
+    def test_base_init_with_custom_id_and_no_id(self):
+        b1 = Base()
+        b2 = Base(10)
+        self.assertEqual(b1.id, 1)
+        self.assertEqual(b2.id, 10)
+
     def test_id_assignment_with_multiple_instances(self):
         instances = [Base() for _ in range(100)]
         self.assertEqual([instance.id for instance in instances],
@@ -134,6 +140,18 @@ class TestBase(unittest.TestCase):
 
         # Change back to the original directory
         os.chdir(current_directory)
+
+    def test_base_to_json_string_with_none_input(self):
+        json_string = Base.to_json_string(None)
+        self.assertEqual(json_string, "[]")
+
+    def test_base_from_json_string_with_none_input(self):
+        data = Base.from_json_string(None)
+        self.assertEqual(data, [])
+    
+    def test_base_create_with_unsupported_class(self):
+        with self.assertRaises(ValueError):
+            dummy_instance = Base.create(invalid_attribute=42)
 
 
 if __name__ == '__main__':

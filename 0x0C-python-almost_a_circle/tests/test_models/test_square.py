@@ -96,6 +96,23 @@ class TestSquare(unittest.TestCase):
         valid_dict = s.to_dictionary()
         self.assertDictEqual(valid_dict, {'id': 1, 'size': 5, 'x': 2, 'y': 3})
 
+    def test_square_init_with_invalid_attributes(self):
+        with self.assertRaises(TypeError):
+            s1 = Square("invalid", 1, 2, 10)
+        
+        with self.assertRaises(ValueError):
+            s2 = Square(-5, 1, 2, 11)
+
+    def test_square_to_dictionary(self):
+        s1 = Square(5, 1, 2, 10)
+        expected_dict = {'id': 10, 'size': 5, 'x': 1, 'y': 2}
+        self.assertDictEqual(s1.to_dictionary(), expected_dict)
+    
+    def test_square_update_with_invalid_attribute(self):
+        s1 = Square(5, 1, 2, 10)
+        with self.assertRaises(AttributeError):
+            s1.update(invalid_attribute=42)
+
 
 if __name__ == '__main__':
     unittest.main()

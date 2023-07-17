@@ -183,7 +183,10 @@ class Rectangle(Base):
                 self.y = args[4]
         else:
             for key, value in kwargs.items():
-                setattr(self, key, value)
+                if hasattr(self, key):
+                    setattr(self, key, value)
+                else:
+                    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{key}'")
 
     def to_dictionary(self):
         """Returns a dictionary representation of the rectangle.
