@@ -76,6 +76,26 @@ class TestSquare(unittest.TestCase):
         expected_dict = {'id': 1, 'size': 5, 'x': 2, 'y': 3}
         self.assertDictEqual(s.to_dictionary(), expected_dict)
 
+    # Additional tests
+    def test_invalid_size_value(self):
+        with self.assertRaises(ValueError):
+            s = Square(-5)
+
+    def test_invalid_x_value(self):
+        with self.assertRaises(ValueError):
+            s = Square(5, -2, 3)
+
+    def test_invalid_y_value(self):
+        with self.assertRaises(ValueError):
+            s = Square(5, 2, -3)
+
+    def test_to_dictionary_with_invalid_input(self):
+        s = Square(5, 2, 3, 1)
+        invalid_dict = {'id': 1, 'size': 5, 'x': 2, 'y': 3,
+                        'invalid_attribute': 42}
+        valid_dict = s.to_dictionary()
+        self.assertDictEqual(valid_dict, {'id': 1, 'size': 5, 'x': 2, 'y': 3})
+
 
 if __name__ == '__main__':
     unittest.main()

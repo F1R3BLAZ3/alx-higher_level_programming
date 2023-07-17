@@ -83,6 +83,31 @@ class TestRectangle(unittest.TestCase):
         expected_dict = {'id': 1, 'width': 5, 'height': 10, 'x': 2, 'y': 3}
         self.assertDictEqual(r.to_dictionary(), expected_dict)
 
+    # Additional tests
+    def test_invalid_width_value(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(-5, 10)
+
+    def test_invalid_height_value(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(5, -10)
+
+    def test_invalid_x_value(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(5, 10, -2, 3)
+
+    def test_invalid_y_value(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(5, 10, 2, -3)
+
+    def test_to_dictionary_with_invalid_input(self):
+        r = Rectangle(5, 10, 2, 3, 1)
+        invalid_dict = {'id': 1, 'width': 5, 'height': 10, 'x': 2, 'y': 3,
+                        'invalid_attribute': 42}
+        valid_dict = r.to_dictionary()
+        self.assertDictEqual(valid_dict, {'id': 1, 'width': 5, 'height': 10,
+                                          'x': 2, 'y': 3})
+
 
 if __name__ == '__main__':
     unittest.main()
