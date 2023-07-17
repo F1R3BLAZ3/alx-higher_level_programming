@@ -89,7 +89,7 @@ class Base:
         Returns:
             A new instance with the specified attributes.
         """
-        instance = cls(1, 1)  # Create a dummy instance with default values
+        instance = cls()
         instance.update(**dictionary)
         return instance
 
