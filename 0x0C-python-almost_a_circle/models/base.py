@@ -83,16 +83,17 @@ class Base:
         """Creates a new instance based on a dictionary of attributes.
 
         Args:
-        **dictionary: Keyword arguments representing the attributes
-        of the instance.
+            **dictionary: Keyword arguments representing the attributes
+                of the instance.
 
         Returns:
-        A new instance with the specified attributes.
+            A new instance with the specified attributes.
         """
-        class_name = cls.__name__
-        supported_classes = {"Rectangle": cls(1, 1), "Square": cls(1)}
-        dummy_instance = supported_classes.get(class_name)
-        if dummy_instance is None:
+        if cls.__name__ == "Rectangle":
+            dummy_instance = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy_instance = cls(1)
+        else:
             raise ValueError("Unsupported class name")
 
         dummy_instance.update(**dictionary)
