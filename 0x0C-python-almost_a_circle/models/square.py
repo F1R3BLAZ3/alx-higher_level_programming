@@ -7,8 +7,8 @@ from models.rectangle import Rectangle
 class Square(Rectangle):
     """Square class for representing squares.
 
-    This class inherits from the Rectangle class and adds attributes and methods
-    specific to squares.
+    This class inherits from the Rectangle class andadds attributes and
+    methods specific to squares.
 
     Attributes:
         size: The size of the square.
