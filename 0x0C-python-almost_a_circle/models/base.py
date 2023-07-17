@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-import json
 """Base class for objects.
 """
+import json
 
 
 class Base:
