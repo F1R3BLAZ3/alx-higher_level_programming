@@ -51,3 +51,4 @@ Test
 0x0C-python-almost_a_circle/4-main.py
 0x0C-python-almost_a_circle/9-main.py
 0x0C-python-almost_a_circle/13-main.py
+0x0C-python-almost_a_circle/tests/__init__.py
