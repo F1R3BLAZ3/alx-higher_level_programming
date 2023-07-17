@@ -53,3 +53,15 @@ class Base:
             [obj.to_dictionary() for obj in list_objs])
         with open(filename, 'w') as file:
             file.write(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        if cls.__name__ == "Rectangle":
+            dummy_instance = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy_instance = cls(1)
+        else:
+            raise ValueError("Unsupported class name")
+
+        dummy_instance.update(**dictionary)
+        return dummy_instance
