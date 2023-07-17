@@ -79,7 +79,8 @@ class Square(Rectangle):
                 if hasattr(self, key):
                     setattr(self, key, value)
                 else:
-                    raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{key}'")
+                    raise AttributeError("'{}' object has no attribute '{}'"
+                                         .format(self.__class__.__name__, key))
 
     def to_dictionary(self):
         """Converts the square to a dictionary representation.
