@@ -89,9 +89,15 @@ class Base:
         Returns:
             A new instance with the specified attributes.
         """
-        instance = cls()
-        instance.update(**dictionary)
-        return instance
+        if cls.__name__ == "Rectangle":
+            dummy_instance = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy_instance = cls(1)
+        else:
+            raise ValueError("Unsupported class name")
+
+        dummy_instance.update(**dictionary)
+        return dummy_instance
 
     @classmethod
     def load_from_file(cls):
