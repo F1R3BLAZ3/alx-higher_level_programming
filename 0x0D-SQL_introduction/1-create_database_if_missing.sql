@@ -1,10 +1,10 @@
--- Script to create the database hbtn_0c_0 if it doesn't exist
+-- Script to create the database hbtn_0c_0 in MySQL
 
--- Connect to MySQL server as root
--- You will be prompted to enter your MySQL root password
-mysql -u root -p << EOF
+-- Connect to MySQL server
+-- mysql -hlocalhost -uroot -p
+
 -- Create the database if it doesn't exist
 CREATE DATABASE IF NOT EXISTS hbtn_0c_0;
--- Exit the MySQL session
-EXIT;
-EOF
+
+-- Disconnect from the MySQL server
+-- exit;
