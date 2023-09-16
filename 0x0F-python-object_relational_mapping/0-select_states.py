@@ -39,4 +39,3 @@ if __name__ == "__main__":
     # Display the results
     for state in states:
         print(state)
-
