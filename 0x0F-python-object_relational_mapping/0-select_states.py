@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+
+"""
+This script connects to a MySQL database, retrieves data from a 'states' table,
+and displays the results.
+"""
+
 import MySQLdb
 import sys
 
