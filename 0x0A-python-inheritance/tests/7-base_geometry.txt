@@ -1,0 +1,40 @@
+"""
+This is a doctest file for the BaseGeometry class.
+
+>>> bg.integer_validator = __import__('7-base_geometry').bg.integer_validator
+
+>>> bg = BaseGeometry()
+
+# Test case: Valid integer value
+>>> bg.integer_validator("my_int", 12)
+
+# Test case: Valid zero value
+>>> bg.integer_validator("zero", 0)
+
+# Test case: Invalid string value
+>>> try:
+...     bg.integer_validator("name", "John")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] name must be an integer
+
+# Test case: Invalid negative value
+>>> try:
+...     bg.integer_validator("age", -10)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[ValueError] age must be greater than 0
+
+# Test case: Valid large integer value
+>>> bg.integer_validator("large_value", 999999999)
+
+# Test case: Valid negative value
+>>> bg.integer_validator("negative_value", -5)
+
+# Test case: Invalid float value
+>>> try:
+...     bg.integer_validator("price", 3.14)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] price must be an integer
+"""

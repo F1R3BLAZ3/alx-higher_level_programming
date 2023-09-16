@@ -1,0 +1,15 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("Hello. How are you? I'm good.")
+        Hello.
+        
+        How are you?
+        
+        I'm good.
+
+        >>> text_indentation("This is a test: testing the function.")
+        This is a test:
+        
+        testing the function.
+
+        >>> text_indentation("No punctuation in this text")
+        No punctuation in this text
