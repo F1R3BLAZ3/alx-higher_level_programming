@@ -6,7 +6,7 @@ if __name__ == "__main__":
     # Check if all 3 arguments are provided
     if len(sys.argv) != 4:
         print("Usage: {} <mysql_username> <mysql_password> <database_name>".
-        format(sys.argv[0]))
+         format(sys.argv[0]))
         sys.exit(1)
 
     # Extract the arguments
