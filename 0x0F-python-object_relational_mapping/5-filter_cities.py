@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-import MySQLdb
 import sys
+import MySQLdb as mysql
+# If you installed 'mysqlclient' instead of 'MySQLdb', you can import it as follows:
+# import MySQLdb as mysql
 
 if __name__ == "__main__":
     # Check if all 4 arguments are provided
@@ -16,7 +18,7 @@ if __name__ == "__main__":
 
     try:
         # Connect to the MySQL server
-        db = MySQLdb.connect(
+        db = mysql.connect(
             host="localhost",
             port=3306,
             user=mysql_username,
@@ -49,6 +51,6 @@ if __name__ == "__main__":
         for city in cities:
             print(city[0])
 
-    except MySQLdb.Error as e:
+    except mysql.Error as e:
         print("MySQL Error: {}".format(e))
         sys.exit(1)
