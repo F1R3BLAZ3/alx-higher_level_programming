@@ -1,18 +1,17 @@
 #!/usr/bin/python3
 
 """
-This script connects to a MySQL database,
-retrieves cities from a 'cities' table
-that belong to a specified state, and displays the results.
-It takes four command-line arguments: MySQL username,
-MySQL password, the name of the database to connect to,
-and the name of the state to filter cities by.
-"""
+    Query cities by state name from a MySQL database.
+    """
 
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
+
+def main():
+    """
+    Query cities by state name from a MySQL database.
+    """
     # Check if all 4 arguments are provided
     if len(sys.argv) != 5:
         print("Usage: {} <mysql_username> <mysql_password> <database_name> "
@@ -38,10 +37,9 @@ if __name__ == "__main__":
         # Create a cursor object
         cursor = db.cursor()
 
-        # Create a parameterized query with placeholders to prevent
-        # SQL injection
+        # Create the SQL query with user input (SQL injection free)
         sql_query = (
-            "SELECT cities.id, cities.name, states.name "
+            "SELECT cities.id, cities.name "
             "FROM cities "
             "JOIN states ON cities.state_id = states.id "
             "WHERE states.name = %s "
@@ -65,3 +63,7 @@ if __name__ == "__main__":
     except MySQLdb.Error as e:
         print("MySQL Error: {}".format(e))
         sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
