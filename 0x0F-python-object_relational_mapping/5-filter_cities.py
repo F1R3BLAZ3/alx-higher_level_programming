@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
         # Create the SQL query with user input (SQL injection free)
         sql_query = (
-            "SELECT GROUP_CONCAT(cities.name SEPARATOR ', ') "
+            "SELECT cities.name "
             "FROM cities "
             "INNER JOIN states ON cities.state_id = states.id "
             "WHERE states.name = %s"
@@ -38,16 +38,16 @@ if __name__ == "__main__":
         # Execute the SQL query with the state name as a parameter
         cursor.execute(sql_query, (state_name,))
 
-        # Fetch the result
-        result = cursor.fetchone()
+        # Fetch all rows as a list of tuples
+        cities = cursor.fetchall()
 
         # Close the cursor and database connection
         cursor.close()
         db.close()
 
         # Display the results
-        if result and result[0]:
-            print(result[0])
+        for city in cities:
+            print(city[0])
 
     except MySQLdb.Error as e:
         print("MySQL Error: {}".format(e))
