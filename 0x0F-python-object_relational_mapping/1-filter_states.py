@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 """
-This script connects to a MySQL database, retrieves states whose names start with 'N'
+This script connects to a MySQL database,
+retrieves states whose names start with 'N'
 from a 'states' table, and displays the results.
 """
 
@@ -33,7 +34,8 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Execute the SQL query to fetch states starting with 'N'
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id")
+    cursor.execute(
+        "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id")
 
     # Fetch all rows as a list of tuples
     states = cursor.fetchall()
