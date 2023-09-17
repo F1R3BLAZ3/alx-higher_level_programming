@@ -14,8 +14,7 @@ def main():
     """
     # Check if all 4 arguments are provided
     if len(sys.argv) != 5:
-        print("Usage: {} <mysql_username> <mysql_password> <database_name> "
-              "<state_name>".format(sys.argv[0]))
+        print("Usage: {} <mysql_username> <mysql_password> <database_name> <state_name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Extract the arguments
