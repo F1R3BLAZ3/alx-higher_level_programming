@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 
 """
-This script connects to a MySQL database, retrieves cities from a 'cities' table
-that belong to a specified state, and displays the results. It takes four
-command-line arguments: MySQL username, MySQL password, the name of the database
-to connect to, and the name of the state to filter cities by.
+This script connects to a MySQL database,
+retrieves cities from a 'cities' table
+that belong to a specified state, and displays the results.
+It takes four command-line arguments: MySQL username,
+MySQL password, the name of the database to connect to,
+and the name of the state to filter cities by.
 """
 
 import MySQLdb
@@ -13,7 +15,8 @@ import sys
 if __name__ == "__main__":
     # Check if all 4 arguments are provided
     if len(sys.argv) != 5:
-        print("Usage: {} <mysql_username> <mysql_password> <database_name> <state_name>".format(sys.argv[0]))
+        print("Usage: {} <mysql_username> <mysql_password> <database_name> "
+              "<state_name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Extract the arguments
@@ -35,8 +38,15 @@ if __name__ == "__main__":
         # Create a cursor object
         cursor = db.cursor()
 
-        # Create a parameterized query with placeholders to prevent SQL injection
-        sql_query = "SELECT cities.id, cities.name, states.name FROM cities JOIN states ON cities.state_id = states.id WHERE states.name = %s ORDER BY cities.id"
+        # Create a parameterized query with placeholders to prevent
+        # SQL injection
+        sql_query = (
+            "SELECT cities.id, cities.name, states.name "
+            "FROM cities "
+            "JOIN states ON cities.state_id = states.id "
+            "WHERE states.name = %s "
+            "ORDER BY cities.id"
+        )
 
         # Execute the SQL query with the state name as a parameter
         cursor.execute(sql_query, (state_name,))

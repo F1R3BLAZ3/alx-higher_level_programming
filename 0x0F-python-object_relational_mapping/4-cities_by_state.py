@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
 """
-This script connects to a MySQL database, retrieves cities from a 'cities' table,
-and displays the results. It takes three command-line arguments: MySQL username,
+This script connects to a MySQL database,
+retrieves cities from a 'cities' table, and displays the results.
+It takes three command-line arguments: MySQL username,
 MySQL password, and the name of the database to connect to.
 """
 
@@ -12,7 +13,8 @@ import sys
 if __name__ == "__main__":
     # Check if all 3 arguments are provided
     if len(sys.argv) != 4:
-        print("Usage: {} <mysql_username> <mysql_password> <database_name>".format(sys.argv[0]))
+        print("Usage: {} <mysql_username> <mysql_password> <database_name>"
+              .format(sys.argv[0]))
         sys.exit(1)
 
     # Extract the arguments

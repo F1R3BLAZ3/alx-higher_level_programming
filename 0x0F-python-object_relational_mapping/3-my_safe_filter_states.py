@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
 """
-This script connects to a MySQL database, retrieves states based on a user-provided state name
-from a 'states' table using a parameterized query to prevent SQL injection, and displays the results.
+This script connects to a MySQL database,
+retrieves states based on a user-provided state name
+from a 'states' table using a parameterized query to prevent SQL injection,
+and displays the results.
 """
 
 import MySQLdb
@@ -11,8 +13,8 @@ import sys
 if __name__ == "__main__":
     # Check if all 4 arguments are provided
     if len(sys.argv) != 5:
-        print("Usage: {} <mysql_username> <mysql_password> <database_name> <state_name>"
-              .format(sys.argv[0]))
+        print("Usage: {} <mysql_username> <mysql_password> <database_name> "
+              "<state_name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Extract the arguments
