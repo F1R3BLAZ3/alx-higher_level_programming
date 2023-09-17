@@ -1,13 +1,27 @@
 #!/usr/bin/python3
-import sys
-import MySQLdb as mysql
-# If you installed 'mysqlclient' instead of 'MySQLdb', you can import it as follows:
-# import MySQLdb as mysql
 
-if __name__ == "__main__":
+"""
+    Fetch and print city names for a given state from the database.
+    """
+
+import MySQLdb
+import sys
+
+
+def fetch_cities_for_state():
+    """
+    Fetch and print city names for a given state from the database.
+
+    Usage:
+    ./script.py <mysql_username> <mysql_password> <database_name> <state_name>
+    """
     # Check if all 4 arguments are provided
+    usage = (
+        "Usage: {} <mysql_username> <mysql_password> "
+        "<database_name> <state_name>"
+    )
     if len(sys.argv) != 5:
-        print("Usage: {} <mysql_username> <mysql_password> <database_name> <state_name>".format(sys.argv[0]))
+        print(usage.format(sys.argv[0]))
         sys.exit(1)
 
     # Extract the arguments
@@ -18,7 +32,7 @@ if __name__ == "__main__":
 
     try:
         # Connect to the MySQL server
-        db = mysql.connect(
+        db = MySQLdb.connect(
             host="localhost",
             port=3306,
             user=mysql_username,
@@ -29,28 +43,33 @@ if __name__ == "__main__":
         # Create a cursor object
         cursor = db.cursor()
 
-        # Create the SQL query with user input (SQL injection free)
+        # Create a parameterized SQL query to retrieve city names
         sql_query = (
-            "SELECT cities.name "
+            "SELECT GROUP_CONCAT(cities.name "
+            "ORDER BY cities.id ASC SEPARATOR ', ') "
             "FROM cities "
-            "INNER JOIN states ON cities.state_id = states.id "
+            "JOIN states ON cities.state_id = states.id "
             "WHERE states.name = %s"
         )
 
         # Execute the SQL query with the state name as a parameter
         cursor.execute(sql_query, (state_name,))
 
-        # Fetch all rows as a list of tuples
-        cities = cursor.fetchall()
+        # Fetch the result as a tuple
+        result = cursor.fetchone()
 
         # Close the cursor and database connection
         cursor.close()
         db.close()
 
         # Display the results
-        for city in cities:
-            print(city[0])
+        if result and result[0]:
+            print(result[0])
 
-    except mysql.Error as e:
+    except MySQLdb.Error as e:
         print("MySQL Error: {}".format(e))
         sys.exit(1)
+
+
+if __name__ == "__main__":
+    fetch_cities_for_state()
