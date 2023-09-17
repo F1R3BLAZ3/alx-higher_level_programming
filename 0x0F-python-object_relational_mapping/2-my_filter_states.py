@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 """
-This script connects to a MySQL database, retrieves states based on a user-provided state name
+This script connects to a MySQL database,
+retrieves states based on a user-provided state name
 from a 'states' table, and displays the results.
 """
 
@@ -11,8 +12,8 @@ import sys
 if __name__ == "__main__":
     # Check if all 4 arguments are provided
     if len(sys.argv) != 5:
-        print("Usage: {} <mysql_username> <mysql_password> <database_name> <state_name>"
-              .format(sys.argv[0]))
+        print("Usage: {} <mysql_username> <mysql_password> <database_name> "
+              "<state_name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Extract the arguments
@@ -34,10 +35,10 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Create the SQL query with user input
-    sql_query = "SELECT * FROM states WHERE name = '{}' ORDER BY states.id".format(state_name)
+    sql_query = "SELECT * FROM states WHERE name = %s ORDER BY states.id"
 
     # Execute the SQL query
-    cursor.execute(sql_query)
+    cursor.execute(sql_query, (state_name,))
 
     # Fetch all rows as a list of tuples
     states = cursor.fetchall()
