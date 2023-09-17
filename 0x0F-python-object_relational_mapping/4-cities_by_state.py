@@ -1,16 +1,20 @@
 #!/usr/bin/python3
 
 """
-This script connects to a MySQL database,
-retrieves cities from a 'cities' table, and displays the results.
-It takes three command-line arguments: MySQL username,
-MySQL password, and the name of the database to connect to.
-"""
+    Fetch and print all city records from the database.
+    """
 
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
+
+def fetch_all_cities():
+    """
+    Fetch and print all city records from the database.
+
+    Usage:
+    ./script.py <mysql_username> <mysql_password> <database_name>
+    """
     # Check if all 3 arguments are provided
     if len(sys.argv) != 4:
         print("Usage: {} <mysql_username> <mysql_password> <database_name>"
@@ -35,8 +39,14 @@ if __name__ == "__main__":
         # Create a cursor object
         cursor = db.cursor()
 
-        # Execute the SQL query to fetch cities and order by cities.id
-        cursor.execute("SELECT * FROM cities ORDER BY cities.id")
+        # Create the SQL query to retrieve all cities sorted by cities.id
+        sql_query = (
+            "SELECT * FROM cities "
+            "ORDER BY cities.id ASC"
+        )
+
+        # Execute the SQL query
+        cursor.execute(sql_query)
 
         # Fetch all rows as a list of tuples
         cities = cursor.fetchall()
@@ -52,3 +62,7 @@ if __name__ == "__main__":
     except MySQLdb.Error as e:
         print("MySQL Error: {}".format(e))
         sys.exit(1)
+
+
+if __name__ == "__main__":
+    fetch_all_cities()
