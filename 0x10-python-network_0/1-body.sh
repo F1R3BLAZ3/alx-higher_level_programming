@@ -1,3 +1,3 @@
 #!/bin/bash
-# This script sends a GET request to a URL using curl and displays the response body for a 200 status code
-curl -s -o /dev/stdout -w "%{http_code}" "$1" | (grep -q 200 && cat /dev/stdin)
+# This script sends a GET request to a URL using curl, checks the response status code, and displays the response body for a 200 status code
+curl -sL "$1" -X GET -D /dev/stdout -o /dev/stdout | (grep -q "200 OK" && cat /dev/stdin)
