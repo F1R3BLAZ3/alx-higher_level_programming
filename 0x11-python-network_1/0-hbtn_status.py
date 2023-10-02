@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-import urllib.request
-
 """
     Fetches the content of a URL and prints its type, raw content,
     and decoded content.
     """
+
+
+import urllib.request
 
 
 def fetch_and_print_status():
