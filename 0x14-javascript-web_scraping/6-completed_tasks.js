@@ -2,26 +2,31 @@
 
 const request = require('request');
 
-request(process.argv[2], (err, _res, body) => {
-  if (err) {
-    console.error(err);
-  } else {
-    const completedTasksByUsers = {};
-    body = JSON.parse(body);
+const apiUrl = process.argv[2];
 
-    for (let i = 0; i < body.length; ++i) {
-      const userId = body[i].userId;
-      const completed = body[i].completed;
+request(apiUrl, (error, response, body) => {
+  if (error) {
+    console.log(error);
+  } else if (response.statusCode === 200) {
+    const todos = JSON.parse(body);
+
+    const completedTasksByUsers = {};
+    
+    for (const todo of todos) {
+      const userId = todo.userId;
+      const completed = todo.completed;
 
       if (completed && !completedTasksByUsers[userId]) {
         completedTasksByUsers[userId] = 0;
       }
 
       if (completed) {
-        ++completedTasksByUsers[userId];
+        completedTasksByUsers[userId]++;
       }
     }
 
-    console.log(JSON.stringify(completedTasksByUsers, null, 2));
+    console.log(completedTasksByUsers);
+  } else {
+    console.error(`Failed to retrieve data. Status code: ${response.statusCode}`);
   }
 });
