@@ -11,7 +11,7 @@ request(apiUrl, (error, response, body) => {
     const todos = JSON.parse(body);
 
     const completedTasksByUsers = {};
-    
+
     for (const todo of todos) {
       const userId = todo.userId;
       const completed = todo.completed;
