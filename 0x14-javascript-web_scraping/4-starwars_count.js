@@ -16,7 +16,13 @@ request(apiUrl, (error, response, body) => {
 
     if (Array.isArray(films)) {
       // Filter films that contain character ID 18 (Wedge Antilles)
-      const wedgeAntillesFilms = films.filter((film) => film.characters.includes(characterId));
+      const wedgeAntillesFilms = films.filter((film) => {
+        return film.characters.some((characterUrl) => {
+          // Extract the character ID from the character URL
+          const characterIdFromUrl = characterUrl.match(/(\d+)\/$/)[1];
+          return characterIdFromUrl === characterId.toString();
+        });
+      });
 
       console.log(wedgeAntillesFilms.length);
     } else {
